@@ -19,3 +19,7 @@ nav ul li{
     display: inline-block;
     margin: 5px 20px;
 }
+.dark-nav{
+    background: #4721a0;
+    transition: 0.5s ease;
+}
