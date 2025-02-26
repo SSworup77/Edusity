@@ -23,7 +23,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transform-origin: center center;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    display: block;
+    opacity:0.8;
+}
+.play-icon:hover{
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
 }
 .aboout h3{
     font-weight: 600;
