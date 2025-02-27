@@ -8,24 +8,30 @@ const Navbar = () => {
   const [sticky,setSticky]=useState(false)
   const [mobileMenu,setMobileMenu]=useState(false)
   const menuRef=useRef(null)
+  const menuIconRef=useRef(null)
   useEffect(()=>{
     window.addEventListener('scroll',()=>{
       window.scrollY>150 ? setSticky(true) : setSticky(false)
     })
   },[]);
   useEffect(()=>{
-    const handleClickOutside=(e)=>{
-      if(menuRef.current && !menuRef.current.contains(e.target)){
+    const handleOutsideClick=(e)=>{
+      if(menuRef.current && !menuRef.current.contains(e.target) && e.target!==menuIconRef.current){
         setMobileMenu(false);
       }
     };
     if(mobileMenu){
-      document.addEventListener('touchstart',handleClickOutside)
+      document.addEventListener('touchstart',handleOutsideClick)
+      document.addEventListener('mousedown',handleOutsideClick)
     }
     else{
-      document.removeEventListener('touchstart',handleClickOutside)
+      document.removeEventListener('touchstart',handleOutsideClick)
+      document.removeEventListener('mousedown',handleOutsideClick)
     }
-    return ()=> document.removeEventListener('touchstart',handleClickOutside)
+    return ()=> {
+      document.removeEventListener('touchstart',handleOutsideClick)
+      document.removeEventListener('mousedown',handleOutsideClick)
+    }
   },[mobileMenu]);
 
   const toggleMenu = ()=>{
@@ -42,7 +48,7 @@ const Navbar = () => {
             <li><Link to='testimonials' smooth={true} offset={-250} duration={500}>Testimonials</Link></li>
             <li><Link to='contact' smooth={true} offset={-230} duration={500} className='btn'>Contact us</Link></li>
         </ul>
-        <img src={menu_icon} alt="" className='menu-icon' onClick={toggleMenu}/>
+        <img src={menu_icon} alt="" className='menu-icon' onClick={toggleMenu} ref={menuIconRef}/>
     </nav>
   )
 }
