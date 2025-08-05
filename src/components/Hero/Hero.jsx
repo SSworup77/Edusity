@@ -6,8 +6,7 @@ const Hero = () => {
     <div className="hero">
       <div className="hero-text">
         <h1>We ensure better education for a better world</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui saepe quam aut, 
-          architecto minus nemo repellat laudantium reiciendis. Eius recusandae repellendus enim nam</p>
+        <p>Empowering students through innovative learning experiences that develop critical thinking, creativity, and the skills needed to shape tomorrow's future.</p>
         <button className='btn'>Learn More <img src={dark_arrow} alt="" /></button>
 
       </div>
